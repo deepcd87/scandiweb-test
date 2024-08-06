@@ -130,6 +130,9 @@ $categoryList = Category::find_all();
 <!-- Footer -->
 <?php include_once(SHARED_PATH.'footer.php'); ?>
 <!-- end -->
+ <script>
+  showProductSpecs();
+</script>
 </body>
 <!-- HTML END -->
 </html>
