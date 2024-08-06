@@ -1,8 +1,8 @@
 <?php
 // define const
-define("DB_SERVER", "127.0.0.1");
-define("DB_USER", "user");
-define("DB_PWD", "bTyorteU!K]2dcxM");
-define("DB_NAME", "scandiweb");
+define("DB_SERVER", "");
+define("DB_USER", "");
+define("DB_PWD", "");
+define("DB_NAME", "");
 
 ?>
