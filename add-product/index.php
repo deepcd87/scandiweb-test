@@ -67,7 +67,7 @@ $categoryList = Category::find_all();
 
     <div class="grid-item"> 
         <label for="price">Price ($):</label>
-        <input type="number" id="price" name="product[product_price]" inputname="Price"
+        <input type="number" min=0.00 id="price" name="product[product_price]" inputname="Price"
         value="<?=htmlspecialchars($args['product_price'] ?? '')?>" required><br><br>
     </div>
 
@@ -75,7 +75,7 @@ $categoryList = Category::find_all();
         <label for="productType">Product category:</label>
         <select id="productType" name="product[category_id]" inputname="Product category"
             onChange="showProductSpecs()" required>
-        <option name="" value="0">please select</option>
+        <option name="default" value="0">please select</option>
         <?php 
         foreach ($categoryList as $category) {
           $args['category_id'] == $category->id 
@@ -91,7 +91,7 @@ $categoryList = Category::find_all();
             <p class="product-type-desc">Please, provide product size in MB</p>
 
             <label for="size">Size (MB):</label>
-            <input type="number" id="size" name="product[product_size]" inputname="Size"
+            <input type="number" min=0  id="size" name="product[product_size]" inputname="Size"
             value="<?=htmlspecialchars($args['product_size'] ?? '')?>">
     </div>
 
@@ -99,7 +99,7 @@ $categoryList = Category::find_all();
             <p class="product-type-desc">Please, provide weight in KG</p>
 
             <label for="weight">Weight (KG):</label>
-            <input type="number" id="weight" name="product[product_weight]" inputname="Weight"
+            <input type="number" min=0  id="weight" name="product[product_weight]" inputname="Weight"
             value="<?=htmlspecialchars($args['product_weight'] ?? '')?>"><br>
             
      </div>
@@ -109,15 +109,15 @@ $categoryList = Category::find_all();
             <p class="product-type-desc">Please, provide dimensions in H x W x L format</p>
 
             <label for="height">Height (cm):</label>
-            <input type="number" id="height" name="product[product_height]" inputname="Height"
+            <input type="number" min=0  id="height" name="product[product_height]" inputname="Height"
             value="<?=htmlspecialchars($args['product_height'] ?? '')?>">
 
             <label for="width">Width (cm):</label>
-            <input type="number" id="width" name="product[product_width]" inputname="Width"
+            <input type="number" min=0  id="width" name="product[product_width]" inputname="Width"
             value="<?=htmlspecialchars($args['product_width'] ?? '')?>">
             
             <label for="length">Length (cm):</label>
-            <input type="number" id="length" name="product[product_length]" inputname="Length"
+            <input type="number" min=0  id="length" name="product[product_length]" inputname="Length"
             value="<?=htmlspecialchars($args['product_length'] ?? '')?>">
 
       </div>

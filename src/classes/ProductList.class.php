@@ -46,7 +46,7 @@ class ProductList extends Product {
         $content = 
         "
             <input type='checkbox' id='{$this->id}' class='delete-checkbox'
-            name='product[{$this->name}]' value='{$this->id}'>
+            name='product[{$this->sku}]' value='{$this->id}'>
             <img src='./images/{$product_img}'>
             <p>{$this->sku}</p>
             <p><b>{$this->name}</b></p>

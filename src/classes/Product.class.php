@@ -23,9 +23,7 @@ class Product extends DatabaseObject {
 
     }
   
-    public function getName() {
-      return "{$this->name} {$this->price} {$this->sku}";
-    }
+
     static public function find_all() {
       if (isset($_GET['sort'])) {
         switch ($_GET['sort']) {

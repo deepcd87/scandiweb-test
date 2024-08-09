@@ -4,7 +4,6 @@ abstract class DatabaseObject {
 
     static protected $database;
     static protected $table_name = "";
-    // static protected $columns = [];
 
     static public function set_database($database) {
         self::$database = $database;
@@ -48,15 +47,6 @@ abstract class DatabaseObject {
         return false;
       }
     }
-    static public function count() {
-
-        $sql = "SELECT COUNT(*) FROM ". static::$table_name;
-        $stmt= self::$database->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return array_shift($result);
-    }
     static public function create() {
 
         $attributes = self::attributes();
@@ -77,31 +67,6 @@ abstract class DatabaseObject {
         }
         catch (PDOException $e){
             die("Failed to add product: " . $e->getMessage());
-        }
-    }
-    protected function update() {
-      $this->validate();
-      if(!empty($this->errors)) { return false; }
-  
-      $attributes = $this->sanitized_attributes();
-      $attributes_pairs = [];
-      foreach($attributes as $key => $value) {
-        $attributes_pairs[] = "{$key}='{$value}'";
-      }
-  
-      $sql = "UPDATE ".static::$table_name." SET ";
-      $sql .= join(', ', $attributes_pairs);
-      $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "'";
-      $sql .= "LIMIT 1";
-      $result = self::$database->query($sql);
-      return $result;
-    }
-    public function save() {
-        // A new record will not have an ID 
-        if(isset($this->id)) {
-          return $this->update();
-        } else {
-          return $this->create();
         }
     }
     static public function delete() {
@@ -146,7 +111,6 @@ abstract class DatabaseObject {
       }
       return $attributes;
     }
-
 
 } // end
 

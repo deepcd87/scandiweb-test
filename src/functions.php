@@ -10,14 +10,5 @@ function flashMessages() {
         unset($_SESSION["error"]);
     }
 }
-// function array_empty_val($array) {
-//     $result = [];
-//     foreach ($array as $key => $value) {
-//         if ($value !== '') {
-//             $result[$key] = $value;
-//         }
-//     }
-//     return $result;
-// }
 
 ?>

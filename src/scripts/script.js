@@ -47,16 +47,34 @@ function formVerify() {
   const formList = document.querySelectorAll("form input, select");
 
   for (let i = 0; i < formList.length; i++) {
-    if (formList[i].required & (formList[i].value == "")) {
-      console.log("Please enter ", formList[i].getAttribute("inputname"));
-      messageBox.innerHTML = `<div class="message-error"><p>Please fill in the "${formList[
-        i
-      ].getAttribute("inputname")}" field </p>`;
+    fieldName = formList[i].getAttribute("inputname");
+
+    if (formList[i].required && (formList[i].value == "")) {
+      messageBox.innerHTML = 
+      `
+      <div class="message-error">
+      <p>Please fill in the "${formList[i].getAttribute("inputname")}" field </p></div>
+      `;
       formList[i].focus();
       return;
-    } else if (formList[i].required & (formList[i].value == 0)) {
-      console.log("Please select product category");
-      messageBox.innerHTML = `<div class="message-error"><p>Please select "Product category"</p>`;
+
+    } else if (formList[i].required
+            && formList[i].type == 'number'
+            && formList[i].value < 0) {
+      messageBox.innerHTML = 
+      `
+      <div class="message-error"><p>${fieldName} field can't be negative number</p></div>
+      `;
+      formList[i].focus();
+      return;      
+
+    } else if (formList[i].required && 
+               (formList[i].type == 'select-one') && 
+               (formList[i].value == "0") ) {
+      messageBox.innerHTML = 
+      `
+      <div class="message-error"><p>Please choose 'Product category'</p></div>
+      `;
       formList[i].focus();
       return;
     }

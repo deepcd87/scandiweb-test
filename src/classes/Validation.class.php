@@ -6,9 +6,6 @@ class Validation {
         $this->args = $_POST['product'];
     }
 
-    public function getData() {
-        return $this->args;
-    }
     public function validate() {
         $attributes = $this->args;
         $db_columns = Product::getColumns();
@@ -19,7 +16,7 @@ class Validation {
                     $_SESSION['error'] = "Please fill '".strtoupper($key)."' field";
                     return false;
                 }
-                if ($key = 'category_id' && $value == '0') {
+                if ($key == 'category_id' && $value == 0) {
                     $_SESSION['error'] = "Please choose 'Product category'";
                     return false;
                 }
