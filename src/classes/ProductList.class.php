@@ -10,8 +10,8 @@ class ProductList extends Product {
 
     public function __construct($args=[]) {
         $this->id = $args['product_id'] ?? '';
-        $this->sku = $args['product_sku'] ?? '';
-        $this->name = $args['product_name'] ?? '';
+        $this->sku = htmlspecialchars($args['product_sku']) ?? '';
+        $this->name = htmlspecialchars($args['product_name']) ?? '';
         $this->price = $args['product_price'] ?? '';
         $this->category_id = $args['category_id'] ?? '';
         $this->size = $args['product_size'] ?? '';
@@ -19,7 +19,7 @@ class ProductList extends Product {
         $this->height = $args['product_height'] ?? '';
         $this->width = $args['product_width'] ?? '';
         $this->length = $args['product_length'] ?? '';
-        $this->category_name = $args['category_name'] ?? '';
+        $this->category_name = htmlspecialchars($args['category_name']) ?? '';
     }
 
     public function show() {
